@@ -32,19 +32,32 @@
     </div>
 
     <div id='row'>
+    <?php
+            include('modelo/class_municipio_dal.php');
+            $obj_lista_muni= new Municipio_dal;
+            $result_muni=$obj_lista_muni->obtener_lista_municipio();
+            if ($result_muni==NULL){
+                    echo '<h2>No se encontraron municipios</h2>';
+            }
+            else{
+?>     
         <div id='col-25'>
             <label id="lbl" class="cursiva">Municipio:</label>
             </div>
         <div id='col-75'>
         <select name="f_municipio" id="f_municipio">
             <option value="0">Elige tu municipio de residencia:</option>
-            <option value="1">Saltillo</option>
-            <option value="2">Monclova</option>
-            <option value="3">Torreón</option>
-            <option value="4">Piedras Negras</option>
-            </select>
-            </div>
-    </div>
+
+            <?php
+            // Obtener listado de municipios mediante un ciclo foreach
+                foreach ($result_muni as $key => $value){									
+                        ?>
+	            <option value="<?=$value->getIdMunicipio(); ?>"><?=$value->getNombredeMunicipio(); ?></option>
+                        <?php } ?>                
+                </select>
+            </div> 
+                </div>
+    <?php } ?>             
 
     <div id='row'>
         <div id='col-25'>
