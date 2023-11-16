@@ -7,7 +7,7 @@ if($_POST){
     $asunto = isset($_POST["f_asunto"]) ? $asunto = strtoupper($_POST["f_asunto"]) : $asunto = null;
 
 
-    echo $curp.'/'.$fecha_hora.'/'.$municipio.'/'.$docente.'/'.$descripcion;
+    echo $curp.'/'.$fecha_hora.'/'.$municipio.'/'.$docente.'/'.$asunto;
 
 
 

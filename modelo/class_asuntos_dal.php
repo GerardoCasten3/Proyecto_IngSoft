@@ -1,8 +1,8 @@
 <?php
-include ('class_municipio.php');
-include ('class_db.php');
+include('class_asuntos.php');
+include('class_db.php');
 
-    class Municipio_dal extends class_db{      
+    class Asuntos_dal extends class_db{
         function __construct(){
             parent::__construct();
         }
@@ -10,34 +10,33 @@ include ('class_db.php');
         function __destruct(){
             parent::__destruct();
         }
-        
 
-            //Obtener datos de un municipio por id
+        //Obtener datos de un asunto por id
         function datos_por_id($id){
 			$id=$this->db_conn->real_escape_string($id);
-			$sql="select * from municipio where id='$id'";
+			$sql="select * from asuntos where id='$id'";
 			$this->set_sql($sql);
 			$result=mysqli_query($this->db_conn,$this->db_query) or die (mysqli_error($this->db_conn));
-			$total_municipios=mysqli_num_rows($result);
+			$total_asuntos=mysqli_num_rows($result);
 			$obj_det=null;
-			if ($total_municipios==1){
+			if ($total_asuntos==1){
 				$renglon=mysqli_fetch_assoc($result);
-				$obj_det= new Municipio($renglon["id_municipio"],$renglon["nombre_de_municipio"]);
+				$obj_det= new Asuntos($renglon["id_asunto"],$renglon["descripcion_asunto"]);
 			}
 				return $obj_det;
 		}
 
-            //Obtener listado de municipios
-        function obtener_lista_municipio(){
-			$sql="select * from municipio";
+         //Obtener listado de asuntos
+         function obtener_lista_asuntos(){
+			$sql="select * from asuntos";
 			$this->set_sql($sql);
 			$rs=mysqli_query($this->db_conn,$this->db_query) or die (mysqli_error($this->db_conn));
-			$total_municipios=mysqli_num_rows($rs);
+			$total_asuntos=mysqli_num_rows($rs);
 			$obj_det=null;
-			if ($total_municipios>0){
+			if ($total_asuntos>0){
 				$i=0;
 				while ($renglon = mysqli_fetch_assoc($rs)) {
-					$obj_det= new Municipio($renglon["id_municipio"],$renglon["nombre_de_municipio"]);
+					$obj_det= new Asuntos($renglon["id_asunto"],$renglon["descripcion_asunto"]);
 					$i++;
 					$lista[$i]=$obj_det;
 					unset($obj_det);
@@ -46,12 +45,12 @@ include ('class_db.php');
 			} 		
 		}
 
-        //Insertar un municipio nuevo en la base de datos
-        function inserta_municipio($obj){
-			$sql="insert into municipio(";
-			$sql.="nombre_de_municipio)";
+         //Insertar un asunto nuevo en la base de datos
+         function inserta_asuntos($obj){
+			$sql="insert into asuntos(";
+			$sql.="descripcion_asunto)";
 			$sql.=" values(";
-			$sql.="'".$obj->getNombredeMunicipio()."'";
+			$sql.="'".$obj->getDescripcion_asunto()."'";
 			$sql.=")";
 			//echo $sql;exit;
 			$this->set_sql($sql);
@@ -67,11 +66,11 @@ include ('class_db.php');
 			return $insertado;
 		}
 
-        //Actualizar un municipio en la base de datos
-        function actualiza_municipio($obj){
-			$sql="update municipio set ";
-			$sql.="nombre_de_municipio="."'".$obj->getNombredeMunicipio()."'";
-			$sql.=" where id_municipio='".$obj->getIdMunicipio()."'";
+         //Actualizar un asunto en la base de datos
+         function actualiza_asuntos($obj){
+			$sql="update asuntos set ";
+			$sql.="descripcion_asunto="."'".$obj->getDescripcion_asunto()."'";
+			$sql.=" where id_asunto='".$obj->getId_asunto()."'";
 			//echo $sql;exit;
 			$this->set_sql($sql);
 			$this->db_conn->set_charset("utf8");
@@ -86,11 +85,11 @@ include ('class_db.php');
 			return $actualizado;			
 		}
 
-        //Verificar si existe un municipio
-        public function existe_municipio($id){
+        //Verificar si existe un asunto
+        public function existe_asunto($id){
 			$id=$this->db_conn->real_escape_string($id);
-			$sql="select count(*) from municipio";
-			$sql.=" where id_municipio='$id'";
+			$sql="select count(*) from asuntos";
+			$sql.=" where id_asunto='$id'";
 			$this->set_sql($sql);
 			$rs=mysqli_query($this->db_conn,$this->db_query) or 
 			die(mysqli_error($this->db_conn));
@@ -99,10 +98,10 @@ include ('class_db.php');
 			return $cuantos;
 		}
 
-		//Borrar un municipio de la base de datos
-        public function borra_municipio($id){
+        //Borrar un asunto de la base de datos
+        public function borra_asuntos($id){
 			$id=$this->db_conn->real_escape_string($id);
-			$sql="delete from municipio where id_municipio='$id'";
+			$sql="delete from asuntos where id_asunto='$id'";
 			$this->set_sql($sql);
 			mysqli_query($this->db_conn,$this->db_query) or die(mysqli_query($this->db_conn));
 			if (mysqli_affected_rows($this->db_conn)==1){
@@ -114,5 +113,7 @@ include ('class_db.php');
 			return $borrado;
 		}
 
-    }//END CLASS MUNICIPIO_DAL
+
+    }//END CLASS ASUNTOS_DAL
+
 ?>
