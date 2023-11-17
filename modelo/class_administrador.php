@@ -20,7 +20,7 @@ if(class_exists('Administrador')!= true){
             return $this -> id_admin;
         }
 
-        public fuction setId_admin($id_admin){
+        public function setId_admin($id_admin){
             $this -> id_admin = $id_admin;
         }
 
