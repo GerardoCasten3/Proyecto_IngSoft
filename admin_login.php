@@ -7,49 +7,9 @@ session_unset();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type= "text/css" media="screen" href="css/estilo_admin.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script>
-
-function valida_user(){
-    var usuario=$( "#f_usuario" ).val().trim();
-    var contra=$( "#f_contraseña" ).val().trim();
-
-    if (usuario.length==0){
-      alert("Registre un usuario, no puede ir vacío, verifique.");
-    }
-    else if (contra.length==0){
-        alert("Registre una contraseña, no puede ir vacío, verifique.");
-    }
-    else{
-       var datos={usuario:usuario,contra:contra};
-  $.ajax({
-              url: 'actions/verifica_user.php',
-              type: 'POST',
-              dataType: 'html',
-              data: datos,
-              success: function(response){
-                
-              
-                if(response=="true")
-                  {
-  
-                     window.location.href = "index.php";
-                }else{
-                      Swal.fire({
-                      type: 'error',
-                      title: 'Error: Datos incorrectos vuelva a intentar.',
-                      text: '¡Verificar, por favor!'});
-                }         
-              },
-                error: function(xhr, desc, err) {
-                  console.log(xhr);
-                  console.log("Details: " + desc + "\nError:" + err);
-                }
-  });
-    }
-  }
-    </script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/valid_admin.js"></script>
     <title>Inicio de Sesión Admin</title>
 </head>
 <body>

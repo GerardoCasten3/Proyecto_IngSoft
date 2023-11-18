@@ -8,7 +8,6 @@ session_start();
             $existe=$obj_usuario->verify_user($usu,$contra);
 
             if ($existe==1) {
-                      //session_start();
                       $_SESSION['usuario']=$usu;
                       echo 'true';
             }

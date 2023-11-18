@@ -121,12 +121,10 @@
             <input type="submit" class = "boton" id="f_guarda" value="AGENDAR CITA"></input>
             </div>         
 
+    </form>
+
      <p class="adminp">¿Eres administrador? <a href="admin_login.php">Inicia sesión aquí</a></p>
 
-
-    
-
-    
     </div><!-- container -->
 </body>
 </html>
