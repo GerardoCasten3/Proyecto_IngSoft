@@ -44,8 +44,24 @@ function validaSelecthtml($valor){
     }
 }
 
+function validaDateTime($valor) {
+   $dateTime = DateTime::createFromFormat('Y-m-d\TH:i', $valor);
 
+   if ($dateTime && $dateTime->format('Y-m-d\TH:i') === $valor) {
+       return true; 
+   } else {
+       return false; 
+   }
+}
 
+function validaCURP($id) {
+   $regexCurp = '/^[A-Z]{4}\d{6}[HM][A-Z]{5}[0-9A-Z]{2}$/';
+   if (preg_match($regexCurp, $id)) {
+       return true;
+   } else {
+       return false;
+   }
+}
 
 
 

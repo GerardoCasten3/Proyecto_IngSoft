@@ -10,7 +10,7 @@ if(class_exists('Citas')!= true){
         protected $id_estatus;
         protected $id_asunto;
 
-        public function __construct($id_cita = NULL, $numero_de_turno = NULL, $fecha_hora = NULL, $curp = NULL, $id_trabajador = null
+        public function __construct($id_cita = NULL, $numero_de_turno = NULL, $fecha_hora = NULL, $curp = NULL, $id_trabajador = null,
          $id_municipio = NULL, $id_estatus = NULL, $id_asunto = NULL){
             $this -> id_cita = $id_cita;
             $this -> numero_de_turno = $numero_de_turno;

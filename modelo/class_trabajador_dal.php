@@ -14,7 +14,7 @@ include ('class_db.php');
         //Obtener datos de un trabajador por id
         function datos_por_id($id){
 			$id=$this->db_conn->real_escape_string($id);
-			$sql="select * from trabajador where id='$id'";
+			$sql="select * from trabajador where id_trabajador='$id'";
 			$this->set_sql($sql);
 			$result=mysqli_query($this->db_conn,$this->db_query) or die (mysqli_error($this->db_conn));
 			$total_trabajador=mysqli_num_rows($result);

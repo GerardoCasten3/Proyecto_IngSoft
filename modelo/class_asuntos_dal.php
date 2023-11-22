@@ -14,7 +14,7 @@ include('class_db.php');
         //Obtener datos de un asunto por id
         function datos_por_id($id){
 			$id=$this->db_conn->real_escape_string($id);
-			$sql="select * from asuntos where id='$id'";
+			$sql="select * from asuntos where id_asunto='$id'";
 			$this->set_sql($sql);
 			$result=mysqli_query($this->db_conn,$this->db_query) or die (mysqli_error($this->db_conn));
 			$total_asuntos=mysqli_num_rows($result);
@@ -103,7 +103,7 @@ include('class_db.php');
 			$id=$this->db_conn->real_escape_string($id);
 			$sql="delete from asuntos where id_asunto='$id'";
 			$this->set_sql($sql);
-			mysqli_query($this->db_conn,$this->db_query) or die(mysqli_query($this->db_conn));
+			mysqli_query($this->db_conn,$this->db_query) or die(mysqli_error($this->db_conn));
 			if (mysqli_affected_rows($this->db_conn)==1){
 				$borrado=1;
 			}

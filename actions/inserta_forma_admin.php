@@ -62,7 +62,7 @@ if ($_POST) {
                   text: "Cita Agregada Correctamente! Su numero de cita es: ' . $metodos_cita->getNumeroDeTurnoDespuesDeInsercion() . '",
                   type: "success"
                   }).then(function() {
-                    window.location = "../index.php";
+                    window.location = "../idx_admin.php";
                   });';
                 print '</script>';
             } else { //inserta problema
@@ -73,7 +73,7 @@ if ($_POST) {
                   icon: "error",
                   type: "error"
                   }).then(function() {
-                window.location = "../index.php";
+                window.location = "../idx_admin.php";
                   });';
                 print '</script>';
             }
@@ -93,7 +93,7 @@ if ($_POST) {
       icon: "error",
       type: "error"
       }).then(function() {
-    window.location = "../index.php";
+    window.location = "../idx_admin.php";
       });';
         print '</script>';
     } //end catch

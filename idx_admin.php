@@ -1,3 +1,8 @@
+
+<?php
+session_start();
+include('actions/protected_sesion.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +16,7 @@
     <div class='container'>
     <h1>Sistema de Gestión de Citas</h1>
     <p>Si deseas agendar una nueva cita, rellena el formulario.</p>
-    <form id="forma" action="actions/inserta_forma.php" method="post" onsubmit = "return valida_forma();">
+    <form id="forma" action="actions/inserta_forma_admin.php" method="post" onsubmit = "return valida_forma();">
 
     <div id='row'>
         <div id='col-25'>
@@ -121,10 +126,7 @@
             <input type="submit" class = "boton" id="f_guarda" value="AGENDAR CITA"></input>
             </div>         
 
-    </form>
-    
-     <p class="adminp">¿Eres administrador? <a href="admin_login.php">Inicia sesión aquí</a></p>
-
+    </form>    
     </div><!-- container -->
 </body>
 </html>

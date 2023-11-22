@@ -20,8 +20,7 @@ function valida_user(){
               
                 if(response=="true")
                   {
-  
-                     window.location.href = "http://localhost/Proyecto_IngSoft/index.php";
+                     window.location.href = "http://localhost/Proyecto_IngSoft/idx_admin.php";
                 }else{
                       Swal.fire({
                       icon: 'error',
