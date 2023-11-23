@@ -71,7 +71,7 @@ p{
 
 }
 
-
+/*Estrategia de Responsividad*/
 @media screen and (max-width: 600px){  
     *{
         -webkit-box-sizing: border-box;

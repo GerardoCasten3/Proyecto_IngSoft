@@ -13,7 +13,7 @@ include('class_db.php');
 
         function obtener_lista_Alumnos()
         {
-            $sql="select * from alumnos";
+            $sql="select * from alumno;";
             $this->set_sql($sql);
             $rs=mysqli_query($this->db_conn,$this->db_query) or die (mysqli_error($this->db_conn));
             $total_alumnos=mysqli_num_rows($rs);
@@ -80,7 +80,7 @@ include('class_db.php');
     
          //Actualizar un alumno en la base de datos
          function actualiza_alumno($obj){
-			$sql="update alumnos set ";
+			$sql="update alumno set ";
 			$sql.="nombre="."'".$obj->getNombre()."',";
             $sql.="apellido_paterno="."'".$obj->getApellido_paterno()."',";
             $sql.="apellido_materno="."'".$obj->getApellido_materno()."',";
@@ -88,8 +88,7 @@ include('class_db.php');
             $sql.="correo="."'".$obj->getCorreo()."',";
             $sql.="id_municipio="."'".$obj->getId_municipio()."',";
             $sql.="id_nivel="."'".$obj->getId_nivel()."'";
-			$sql.=" where curp='".$obj->getCurp()."'";
-			//echo $sql;exit;
+			$sql.=" where curp='".$obj->getCurp()."';";
 			$this->set_sql($sql);
 			$this->db_conn->set_charset("utf8");
 			mysqli_query($this->db_conn,$this->db_query) or die (mysqli_error($this->db_conn));
@@ -107,7 +106,7 @@ include('class_db.php');
     public function borra_alumno($curp)
     {
         $id = $this->db_conn->real_escape_string($curp);
-        $sql = "delete from alumnos where curp='$curp'";
+        $sql = "delete from alumno where curp='$curp'";
         $this->set_sql($sql);
         mysqli_query($this->db_conn, $this->db_query) or die(mysqli_error($this->db_conn));
         if (mysqli_affected_rows($this->db_conn) == 1) {
