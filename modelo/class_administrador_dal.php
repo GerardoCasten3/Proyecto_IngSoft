@@ -27,6 +27,22 @@ include('class_db.php');
             mysqli_free_result($rs);
      }
 
+     function getId_Trabajadorto_Lista($user) {
+        $sql = "select id_trabajador from administrador where usuario='$user'";
+        $this->set_sql($sql);
+        $this->db_conn->set_charset("utf8");
+        $result = mysqli_query($this->db_conn, $this->db_query) or die(mysqli_error($this->db_conn));
+
+        if (mysqli_num_rows($result) == 1) {
+            $row = mysqli_fetch_assoc($result);
+            $num = $row["id_trabajador"];
+            return $num;
+        } else {
+            // Manejar el error de la consulta
+            return false;
+        }
+    }
+
      function delete_admin($id){
         $sql = "delete from administrador where id_admin=$id";
         $this->set_sql($sql);
@@ -41,7 +57,6 @@ include('class_db.php');
     }
 
     function insert_admin($obj){
-        $fecha=date("Y-m-d H:i:s");
         $sql = "insert into administrador (";
         $sql .= "usuario,";
         $sql .= "contraseña,";
@@ -66,7 +81,6 @@ include('class_db.php');
     }
 
     function actualiza_usuarios($obj){
-        $fecha=date("Y-m-d H:i:s");
 
         $sql = "update administrador set ";
         $sql .= "usuario="."'".$obj->getUsuario()."',";
@@ -85,7 +99,8 @@ include('class_db.php');
         unset($obj);
         return $actualizado;
     }
-        
+    
     }
+    
 
 ?>

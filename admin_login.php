@@ -1,4 +1,6 @@
-
+<?php
+session_unset();//para eliminar las variables de sesion
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,11 +41,6 @@
             </div> <!-- row3 -->
     </form>
         
-
-            <p class='adminr'>¿Eres docente y no tienes cuenta? <a href="sitio_en_construcción.php">Registrate aquí</a></p>
-
-
-
 </div> <!-- container -->
 </body>
 </html>

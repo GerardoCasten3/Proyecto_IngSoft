@@ -7,7 +7,7 @@
 .container {
     width: 80%; /* Define el ancho de tu contenedor principal */
     margin: 0 auto; /* Centra el contenedor horizontalmente */
-    margin-top: 100px;
+    margin-top: 150px;
 }
 
 h1{
@@ -17,6 +17,7 @@ h1{
     font-size: 50px;
     font-weight: bold;
 
+
 }
 p{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -25,10 +26,6 @@ p{
 
 .pf{
     font-style: italic;
-}
-
-.adminr{
-    margin-top: 50px;
 }
 
 #lbl{
@@ -63,6 +60,7 @@ p{
     color:  rgb(48, 2, 156);
     border-radius: 6px;
     border: 2px solid  rgb(48, 2, 156);
+    transition: background-color 0.3s ease; 
 }
 
 .boton:hover{

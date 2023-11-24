@@ -37,21 +37,34 @@ require_once '../php/func_validates.php';
                 exit;
             }
 
-            $ID_MUNICIPIO=$_POST['idMunicipio'];
-            if(validarEntero($ID_MUNICIPIO)==false){
+            $ID_MUNICIPIO=strtoupper($_POST['idMunicipio']);
+            if(validaRequerido($ID_MUNICIPIO)==false){
                 print 'Error: ID Municipio no válido';
                 exit;
             }
+            include("../modelo/class_municipio_dal.php");
+            include("../modelo/class_municipio.php");
+            $obj_muni_dal=new Municipio_dal;
+            $id_muni= new Municipio;
+            $id_muni=$obj_muni_dal->datos_por_nombre($ID_MUNICIPIO);
+            $idnuevo_Municipio = $id_muni->getIdMunicipio();
 
-            $ID_NIVEL=$_POST['idNivel'];
-            if(validarEntero($ID_NIVEL)==false){
+
+            $ID_NIVEL=strtoupper($_POST['idNivel']);
+            if(validaRequerido($ID_NIVEL)==false){
                 print 'Error: ID Nivel no válido';
                 exit;
             }
+            include("../modelo/class_nivel_dal.php");
+            include("../modelo/class_nivel.php");
+            $obj_nivel_dal=new Nivel_dal;
+            $id_nivel= new Nivel;
+            $id_nivel=$obj_nivel_dal->datos_por_nombre($ID_NIVEL);
+            $idnuevo_Nivel = $id_nivel->getId_nivel();
 
             include("../modelo/class_alumno_dal.php");
             $obj_alumno_dal=new Alumno_dal;
-            $obj_alumno = new Alumno($CURP,$NOMBRE,$APELLIDO_PATERNO,$APELLIDO_MATERNO,$TELEFONO,$CORREO,$ID_MUNICIPIO,$ID_NIVEL);
+            $obj_alumno = new Alumno($CURP,$NOMBRE,$APELLIDO_PATERNO,$APELLIDO_MATERNO,$TELEFONO,$CORREO,$idnuevo_Municipio,$idnuevo_Nivel);
             $existe=$obj_alumno_dal->inserta_alumno($obj_alumno);
 
             if ($existe==1) {

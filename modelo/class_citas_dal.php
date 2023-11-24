@@ -106,6 +106,35 @@ class Citas_dal extends class_db
         }//end if    
     }//end function    
 
+    function obtener_lista_CitasTrabajadorCURP($id, $CURP)
+    {
+        $sql="select * from citas where id_trabajador='$id' AND curp='$CURP'";
+        $this->set_sql($sql);
+        $rs=mysqli_query($this->db_conn,$this->db_query) or die (mysqli_error($this->db_conn));
+        $total_citas=mysqli_num_rows($rs);
+        $obj_det=null;
+
+        if ($total_citas>0){
+            $i=0;
+            while ($renglon = mysqli_fetch_assoc($rs)){
+                $obj_det=new Citas(
+                    $renglon["id_cita"],
+                    $renglon["numero_de_turno"],
+                    $renglon["fecha_hora"],
+                    $renglon["curp"],
+                    $renglon["id_trabajador"],
+                    $renglon["id_municipio"],
+                    $renglon["id_estatus"],                                            
+                    $renglon["id_asunto"]
+                    );
+                $i++;
+                $lista[$i]=$obj_det;
+                unset($obj_det);
+            }//end while    
+                return $lista;
+        }//end if    
+    }//end function    
+
     //Insertar una cita nueva en la base de datos
     function inserta_citas($obj)
     {
@@ -139,11 +168,30 @@ class Citas_dal extends class_db
     }
 
     //Actualizar una cita en la base de datos
-    function actualiza_citaResuelta($obj)
+    function actualiza_citaResuelta($id)
     {
         $sql = "update citas set ";
-        $sql .= "id_estatus=" . "'" . $obj->getDescripcion_asunto() . "'";
-        $sql .= " where id_cita='" . $obj->getId_asunto() . "'";
+        $sql .= "id_estatus=2";
+        $sql .= " where id_cita='" . $id . "'";
+        //echo $sql;exit;
+        $this->set_sql($sql);
+        $this->db_conn->set_charset("utf8");
+        mysqli_query($this->db_conn, $this->db_query) or die(mysqli_error($this->db_conn));
+        if (mysqli_affected_rows($this->db_conn) == 1) {
+            $actualizado = 1;
+        } else {
+            $actualizado = 0;
+        }
+        unset($obj);
+        return $actualizado;
+    }
+
+    //Actualizar una cita en la base de datos
+    function actualiza_citaPendiente($id)
+    {
+        $sql = "update citas set ";
+        $sql .= "id_estatus=1";
+        $sql .= " where id_cita='" . $id . "'";
         //echo $sql;exit;
         $this->set_sql($sql);
         $this->db_conn->set_charset("utf8");

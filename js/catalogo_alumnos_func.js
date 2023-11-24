@@ -47,19 +47,19 @@ function agregaAlumno() {
     }
   }
 
-  var idMunicipio = prompt("Ingrese su idMunicipio").trim();
+  var idMunicipio = prompt("Ingrese su municipio");
   if (idMunicipio.length == 0) {
     while (idMunicipio.length == 0) {
       alert("Registre su idMunicipio, no puede ir vacío, verifique.");
-      idMunicipio = prompt("Ingrese su idMunicipio").trim();
+      idMunicipio = prompt("Ingrese su municipio");
     }
   }
 
-  var idNivel = prompt("Ingrese su idNivel").trim();
+  var idNivel = prompt("Ingrese su nivel").trim();
   if (idNivel.length == 0) {
     while (idNivel.length == 0) {
       alert("Registre su idNivel, no puede ir vacío, verifique.");
-      idNivel = prompt("Ingrese su idNivel").trim();
+      idNivel = prompt("Ingrese su nivel").trim();
     }
   }
 
@@ -79,6 +79,7 @@ function agregaAlumno() {
     dataType: "html",
     data: datos,
     success: function (response) {
+      console.log(response);
       if (response == "true") {
         window.location.href =
           "http://localhost/Proyecto_IngSoft/lista_alumnos.php";
@@ -194,19 +195,19 @@ function editaAlumno() {
         }
       }
 
-      var idMunicipio = prompt("Ingrese su idMunicipio").trim();
+      var idMunicipio = prompt("Ingrese su municipio").trim();
       if (idMunicipio.length == 0) {
         while (idMunicipio.length == 0) {
           alert("Registre su idMunicipio, no puede ir vacío, verifique.");
-          idMunicipio = prompt("Ingrese su idMunicipio").trim();
+          idMunicipio = prompt("Ingrese su municipio").trim();
         }
       }
 
-      var idNivel = prompt("Ingrese su idNivel").trim();
+      var idNivel = prompt("Ingrese su nivel").trim();
       if (idNivel.length == 0) {
         while (idNivel.length == 0) {
           alert("Registre su idNivel, no puede ir vacío, verifique.");
-          idNivel = prompt("Ingrese su idNivel").trim();
+          idNivel = prompt("Ingrese su nivel").trim();
         }
       }
 

@@ -27,6 +27,20 @@ include ('class_db.php');
 				return $obj_det;
 		}
 
+		function datos_por_nombre($nombre){
+			$nombre = $this->db_conn->real_escape_string($nombre);
+			$sql = "select * from municipio WHERE nombre_de_municipio = '$nombre'";
+			$this->set_sql($sql);
+			$result = mysqli_query($this->db_conn, $this->db_query) or die(mysqli_error($this->db_conn));
+			$total_municipios = mysqli_num_rows($result);
+			$obj_det = null;
+			if ($total_municipios == 1){
+				$renglon = mysqli_fetch_assoc($result);
+				$obj_det= new Municipio($renglon["id_municipio"],$renglon["nombre_de_municipio"]);
+			}
+			return $obj_det;
+		}
+
             //Obtener listado de municipios
         function obtener_lista_municipio(){
 			$sql="select * from municipio";
@@ -104,7 +118,7 @@ include ('class_db.php');
 			$id=$this->db_conn->real_escape_string($id);
 			$sql="delete from municipio where id_municipio='$id'";
 			$this->set_sql($sql);
-			mysqli_query($this->db_conn,$this->db_query) or die(mysqli_query($this->db_conn));
+			mysqli_query($this->db_conn,$this->db_query) or die(mysqli_error($this->db_conn));
 			if (mysqli_affected_rows($this->db_conn)==1){
 				$borrado=1;
 			}

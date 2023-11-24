@@ -2,17 +2,20 @@
 <?php
 session_start();
 include('actions/protected_sesion.php');
+include("menu_horizontal.php" )
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset='UTF-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type= "text/css" media="screen" href="css/estilo_proy.css">
+    <link rel="stylesheet" type= "text/css" media="screen" href="css/estilo_idx_admin.css">
     <script src="js/valid.js"></script>
     <title>Gestión de Citas</title>
 </head>
 <body>
+
     <div class='container'>
     <h1>Sistema de Gestión de Citas</h1>
     <p>Si deseas agendar una nueva cita, rellena el formulario.</p>

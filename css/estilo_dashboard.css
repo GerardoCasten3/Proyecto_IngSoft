@@ -1,0 +1,14 @@
+.container {
+    width: 35%; /* Define el ancho de tu contenedor principal */
+    margin: auto;
+    margin-top: 30px;
+}
+
+h1,p{
+    font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+p{
+    font-size: 18px;
+}

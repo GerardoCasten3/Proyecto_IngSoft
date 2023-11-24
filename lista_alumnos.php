@@ -12,12 +12,12 @@ include('actions/protected_sesion.php');
     <link rel="stylesheet" type="text/css" media="screen" href="css/estilo_lista_alumnos.css">
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/sweetalert2.all.min.js"></script>
-    <script src="js/catalogo_func.js"></script>
+    <script src="js/catalogo_alumnos_func.js"></script>
     <title>Catálogo de Alumnos</title>
 </head>
-
 <body>
     <div class="container">
+    <?php include("menu_horizontal.php" ) ?>
         <h2>Catálogo de Alumnos</h2>
         <?php
         include("modelo/class_alumno_dal.php");
@@ -27,7 +27,7 @@ include('actions/protected_sesion.php');
 
         if ($result_alumno == NULL) {
 
-            print "<p>No se encontraron resultados de cursos</p>";
+            print "<p>No se encontraron resultados de alumnos</p>";
         } else {
         }
         ?>
@@ -65,7 +65,7 @@ include('actions/protected_sesion.php');
             ?>
             <!-- Agrega más filas según necesites -->
         </table>
-    </div>
+    </div> <!-- cierre de div container -->
 </body>
 
 </html>

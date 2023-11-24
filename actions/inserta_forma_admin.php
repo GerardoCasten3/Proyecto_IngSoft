@@ -59,7 +59,10 @@ if ($_POST) {
                 print 'Swal.fire({
                   title: "Registro de Cita",
                   icon: "success",
-                  text: "Cita Agregada Correctamente! Su numero de cita es: ' . $metodos_cita->getNumeroDeTurnoDespuesDeInsercion() . '",
+                  html: "Cita Agregada Correctamente!<br><br>' .
+                  'CURP: ' . $curp . '<br>' .
+                     'Fecha: ' . $fecha_hora . '<br>' .
+                                 'Número de Turno: ' . $metodos_cita->getNumeroDeTurnoDespuesDeInsercion() . '",
                   type: "success"
                   }).then(function() {
                     window.location = "../idx_admin.php";
