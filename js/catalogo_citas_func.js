@@ -142,7 +142,44 @@ function borraCita() {
       });
     });
   }
+
+  function editaCita(){
+    var deleteButtons = document.querySelectorAll(".edit-btn");
   
+    deleteButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var id_cita = button.getAttribute("data-id");
+        console.log(id_cita);
+        var fecha_hora = prompt("Introduce la fecha y hora a actualizar (YYYY-MM-DD HH:mm:ss):");
+            var datos = { id_cita: id_cita, fecha_hora: fecha_hora };
+            console.log("Actualizando cita con id:", id_cita, " con fecha y hora nueva: ", fecha_hora);
+
+            $.ajax({
+              url: "http://localhost/proyecto_ingsoft/actions/editar_cita.php",
+              type: "POST",
+              dataType: "html",
+              data: datos,
+              success: function (response) {
+                if (response == "true") {
+                  window.location.href =
+                    "http://localhost/Proyecto_IngSoft/lista_citas.php";
+                } else {
+                  Swal.fire({
+                    icon: "error",
+                    title: "Error: No se ha podido actualizar.",
+                    text: "¡Vuelve a intentarlo!",
+                  });
+                }
+              },
+              error: function (xhr, desc, err) {
+                console.log(xhr);
+                console.log("Details: " + desc + "\nError:" + err);
+              },
+            }); 
+      });
+    });
+  }
+
   function filterTable() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("curp-filter");

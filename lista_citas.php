@@ -52,6 +52,7 @@ include('actions/protected_sesion.php');
                     <th>Resuelto</th>
                     <th>Pendiente</th>
                     <th>Borrar</th>
+                    <th>Editar</th>
                 </tr>
                 <?php
                 foreach ($result_cita as $key => $value) {
@@ -84,6 +85,8 @@ include('actions/protected_sesion.php');
                                 onclick="javascript:citaPendiente();">Pendiente</button></td>
                         <td><button class="delete-btn" data-id="<?= $value->getId_cita(); ?>"
                                 onclick="javascript:borraCita();">Borrar</button></td>
+                         <td><button class="edit-btn" data-id="<?= $value->getId_cita(); ?>"
+                                onclick="javascript:editaCita();">Editar</button></td>
                     </tr>
                     <?php
                 } //cierre de foreach lista de personas

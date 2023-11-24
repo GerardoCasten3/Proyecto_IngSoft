@@ -1,3 +1,36 @@
+function validateCURP(id){
+  let regexCurp = /^[A-Z]{4}\d{6}[HM][A-Z]{5}[0-9A-Z]{2}$/;
+  if(regexCurp.test(id)){
+      return true;
+  }
+      else{
+          return false;
+      }
+}
+
+function validateEmail(correo){
+  //let regexCorreo = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  let regexCorreo = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$/;
+
+  if(regexCorreo.test(correo)){
+      return true;
+  }
+      else{
+          return false;
+      }
+}
+
+function validateNumber(telefono){
+  let regexEntero = /^-?\d+$/ 
+  if(regexEntero.test(telefono)){
+      return true;
+  }
+      else{
+          return false;
+      }
+}
+
+
 function agregaAlumno() {
   var curp = prompt("Ingrese su CURP").trim();
   if (curp.length == 0) {
@@ -6,6 +39,13 @@ function agregaAlumno() {
       curp = prompt("Ingrese su CURP").trim();
     }
   }
+  if(curp.length > 0){
+    while (!validateCURP(curp)) {
+      alert("El curp no es válido, verifique.");
+      curp = prompt("Ingrese su CURP").trim();
+    }
+  }
+
 
   var nombre = prompt("Ingrese sus nombres");
   if (nombre.length == 0) {
@@ -39,11 +79,25 @@ function agregaAlumno() {
     }
   }
 
+  if(telefono.length > 0){
+    while (!validateNumber(telefono)) {
+      alert("El telefono no es válido, verifique.");
+      telefono = prompt("Ingrese su telefono").trim();
+    }
+  }
+
   var correo = prompt("Ingrese su correo").trim();
   if (correo.length == 0) {
     while (correo.length == 0) {
       alert("Registre su correo, no puede ir vacío, verifique.");
       correo = prompt("Ingrese su correo").trim();
+    }
+  }
+
+  if(correo.length > 0){
+    while (!validateEmail(correo)) {
+      alert("El correo no es válido, verifique.");
+      curp = prompt("Ingrese su correo").trim();
     }
   }
 
@@ -187,11 +241,26 @@ function editaAlumno() {
         }
       }
 
+      if(telefono.length > 0){
+        while (!validateNumber(telefono)) {
+          alert("El telefono no es válido, verifique.");
+          telefono = prompt("Ingrese su telefono").trim();
+        }
+      }
+
+
       var correo = prompt("Ingrese su correo").trim();
       if (correo.length == 0) {
         while (correo.length == 0) {
           alert("Registre su correo, no puede ir vacío, verifique.");
           correo = prompt("Ingrese su correo").trim();
+        }
+      }
+
+      if(correo.length > 0){
+        while (!validateEmail(correo)) {
+          alert("El correo no es válido, verifique.");
+          curp = prompt("Ingrese su correo").trim();
         }
       }
 
